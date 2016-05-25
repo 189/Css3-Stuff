@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        /* Set-up */
         body {
             color: rgb(6, 106, 117);
             text-transform: uppercase;
@@ -13,11 +12,11 @@
             background: #F4F6F8;
             padding: 3em 0 0 0;
             line-height: 62px;
+            /* 设置默认视距 只要远大于 cube 宽度的一半(100px)就 ok  */
             -webkit-perspective: 10000px; 
                 perspective : 10000px;
         }
 
-        /* Container box to set the sides relative to */
         .cube {
             width: 200px;
             text-align: center;
@@ -25,14 +24,13 @@
             height: 100px;
 
             -webkit-transition: -webkit-transform .5s;
-            transition: transform .5s; /* Animate the transform properties */
+            transition: transform .5s;
 
             -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d; 
         }
 
-        /* The two faces of the cube */
-        .flippety,.flop {
+        .flip,.flop {
             background: rgb(247, 247, 247);
             border: 1px solid rgba(147, 184, 189, .8);
 
@@ -42,10 +40,11 @@
             -webkit-box-shadow: 0 5px 20px rgba(105, 108, 109, .3), 0 0 8px 5px rgba(208, 223, 226, .4) inset;
             box-shadow: 0 5px 20px rgba(105, 108, 109, .3), 0 0 8px 5px rgba(208, 223, 226, .4) inset;
             height: 100px;
+            /* 3d变换时背景不可见 */
             backface-visibility: hidden;
         }
 
-        .flippety {
+        .flip {
         	-webkit-transform:translateZ(100px);	
         			transform:translateZ(100px);	
         }
@@ -55,21 +54,20 @@
                     transform:translate(100%, -100%) rotateY(90deg) translateZ(-100px);
         }
 
-        /* Rotate the cube */
         .cube:hover {
             -webkit-transform: rotateY(-91deg);
-            transform: rotateY(-91deg); /* Text bleed at 90º */
+            transform: rotateY(-91deg);
         }
 
     </style>
 </head>
 <body>
     <div class="cube">
-        <div class="flippety">
-            <h1>Flippity</h1>
+        <div class="flip">
+            <h1>正面</h1>
         </div>
         <div class="flop">
-            <h2>Flop</h2>
+            <h2>侧面</h2>
         </div>
     </div>
 </body>
